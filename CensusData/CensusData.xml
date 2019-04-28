@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CensusData</name>
+    </assembly>
+    <members>
+        <member name="M:CensusData.Controllers.CensusController.Get">
+            <summary>
+            Get the latest census data
+            </summary>
+        </member>
+        <member name="M:CensusData.Controllers.CensusController.Get(System.Int32)">
+            <summary>
+            Get the people in the census for the specified year
+            </summary>
+            <param name="censusYear"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
