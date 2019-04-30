@@ -39,18 +39,18 @@ namespace ShoeCompany
                 });
 
                 // Configure Swagger to use the xml documentation file
-                var xmlFile = Path.ChangeExtension(typeof(Startup).Assembly.Location, ".xml");
-                c.IncludeXmlComments(xmlFile);
+                //var xmlFile = Path.ChangeExtension(typeof(Startup).Assembly.Location, ".xml");
+                //c.IncludeXmlComments(xmlFile);
             });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
+
+           
                 app.UseDeveloperExceptionPage();
-            }
+            
 
             app.UseMvc();
             app.UseSwagger(c =>

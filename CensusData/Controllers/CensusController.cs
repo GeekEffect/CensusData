@@ -1,5 +1,7 @@
 ﻿using CensusData.Models;
+using CensusData.Services;
 using Microsoft.AspNetCore.Mvc;
+using RandomNameGeneratorLibrary;
 using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;
@@ -11,21 +13,18 @@ namespace CensusData.Controllers
     [ApiController]
     public class CensusController : ControllerBase
     {
+        IPersonBuilderService builderService = new PersonBuilderService(new OccupationGeneratorService(), new PersonNameGenerator());
+        int numberOfPeopleInCensus = 100;
+        int defaultYear = 2011;
+
         /// <summary>
         /// Get the latest census data
         /// </summary>
         // GET: api/products
-        [HttpGet]
+        [HttpGet(Name = "GetLatestCensus")]
         public Census Get()
         {
-            Person[] data = new Person[100];
-
-            // Return dummy data
-            for (int i = 0; i < 100; i++)
-            {
-                data[i] = new Person();
-            }
-            return new Census() { People = data, Year = 2011 };
+            return new Census() { People = builderService.Build(numberOfPeopleInCensus), Year = defaultYear };
         }
 
         /// <summary>
@@ -33,17 +32,10 @@ namespace CensusData.Controllers
         /// </summary>
         /// <param name="censusYear"></param>
         /// <returns></returns>
-        [HttpGet("{censusYear}")]
+        [HttpGet("{censusYear}", Name = "GetCensusDetails")]
         public Census Get(int censusYear)
         {
-            Person[] data = new Person[100];
-
-            // Return dummy data
-            for (int i = 0; i < 100; i++)
-            {
-                data[i] = new Person();
-            }
-            return new Census() { People = data, Year=censusYear };
+            return new Census() { People = builderService.Build(numberOfPeopleInCensus), Year = censusYear };
         }
     }
 }
