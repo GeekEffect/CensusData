@@ -69,9 +69,7 @@ printf "Setup complete!\n\n"
 
 printf "***********************    IMPORTANT INFO  *********************\n\n"
 
-printf "%s %s %s\n\n" "Password for " "$GIT_URL:" "$DEPLOY_PASSWORD"
-
-printf "Example URL: https://$apiappname.azurewebsites.net/api/inventory\n\n"
-
 printf "Swagger URL: https://$apiappname.azurewebsites.net/swagger\n"
+
+printf "Example URL: https://$apiappname.azurewebsites.net/swagger/v1/swagger.json\n\n"
 
