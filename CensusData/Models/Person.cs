@@ -11,5 +11,7 @@ namespace CensusData.Models
         public string Name { get; set; }
         public string Occupation { get; set; }
         public int Age { get; set; }
+        public string Href { get; set; }
+
     }
 }
